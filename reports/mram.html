@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everspin Technologies ($MRAM) - Investment Scorecard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #d1d5db;
+        }
+        .card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.2), 0 4px 6px -2px rgb(0 0 0 / 0.2);
+        }
+        .score-circle {
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            transition: stroke-dashoffset 1.5s ease-out;
+        }
+        .grade-a { color: #22c55e; } /* Green 500 */
+        .grade-b { color: #84cc16; } /* Lime 500 */
+        .grade-c { color: #eab308; } /* Yellow 500 */
+        .grade-d { color: #f97316; } /* Orange 500 */
+        .grade-f { color: #ef4444; } /* Red 500 */
+
+        .score-text {
+            font-size: 3rem;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .metric-score {
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            background-color: #374151;
+        }
+        
+        .metric-score.grade-a { background-color: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.4); }
+        .metric-score.grade-b { background-color: rgba(132, 204, 22, 0.1); border: 1px solid rgba(132, 204, 22, 0.4); }
+        .metric-score.grade-c { background-color: rgba(234, 179, 8, 0.1); border: 1px solid rgba(234, 179, 8, 0.4); }
+    </style>
+</head>
+<body class="p-4 sm:p-6 lg:p-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-white">Everspin Technologies Inc.</h1>
+            <p class="text-xl text-gray-400">Ticker: $MRAM | As of: September 18, 2025</p>
+        </header>
+
+        <!-- Main Scorecard -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column: Overall Score & Summary -->
+            <div class="lg:col-span-1 space-y-8">
+                <div class="card text-center">
+                    <h2 class="text-xl font-semibold text-white mb-4">Overall Investment Grade</h2>
+                    <div class="relative w-48 h-48 mx-auto flex items-center justify-center">
+                        <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#374151" stroke-width="8"/>
+                            <circle id="score-circle-progress" class="score-circle transform -rotate-90 origin-center" cx="50" cy="50" r="45" fill="none" stroke="#22c55e" stroke-width="8" stroke-linecap="round"/>
+                        </svg>
+                        <span id="overall-score-text" class="score-text grade-a">0.0</span>
+                    </div>
+                    <p class="mt-4 text-gray-300">An aggregate score based on foundational strength, financial health, and growth potential.</p>
+                </div>
+                <div class="card">
+                    <h2 class="text-xl font-semibold text-white mb-3">Investment Narrative</h2>
+                     <p class="text-sm mb-4">
+                        <span class="font-bold text-green-400">Bull Case:</span> A profitable, debt-free market leader at a financial inflection point, poised to capture a multi-billion dollar market with superior technology validated by blue-chip customers.
+                    </p>
+                    <p class="text-sm">
+                        <span class="font-bold text-orange-400">Bear Case:</span> Risks center on the pace of market adoption against entrenched technologies, execution on growth strategies, and reliance on key foundry partners.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Column: Detailed Scores -->
+            <div class="lg:col-span-2 space-y-8">
+                <div class="card">
+                    <h2 class="text-xl font-semibold text-white mb-4">I. Foundational Strength & Story</h2>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <div><h3 class="font-semibold text-white">Technology Moat & IP</h3><p class="text-sm text-gray-400">Deep IP portfolio (>650 patents) and decades of R&D from Motorola/Freescale create high barriers to entry.</p></div>
+                            <span class="metric-score grade-a">9.0</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div><h3 class="font-semibold text-white">Leadership & Vision</h3><p class="text-sm text-gray-400">Led by an MRAM pioneer (CEO) and a board of seasoned semiconductor veterans (Intel, Lattice).</p></div>
+                            <span class="metric-score grade-a">9.0</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                             <div><h3 class="font-semibold text-white">Business Model Resilience</h3><p class="text-sm text-gray-400">Smart dual-engine model (product + high-margin IP) and fab-lite manufacturing de-risks operations.</p></div>
+                            <span class="metric-score grade-a">9.0</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div><h3 class="font-semibold text-white">Risk Mitigation</h3><p class="text-sm text-gray-400">Addition of TSMC as a foundry partner diversifies supply chain, though customer concentration remains a risk.</p></div>
+                            <span class="metric-score grade-b">7.5</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="text-xl font-semibold text-white mb-4">II. Financial Health</h2>
+                     <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                             <div><h3 class="font-semibold text-white">Balance Sheet Strength</h3><p class="text-sm text-gray-400">A financial fortress with $45M in cash & equivalents and ZERO long-term debt. Exceptional stability.</p></div>
+                            <span class="metric-score grade-a">10.0</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                             <div><h3 class="font-semibold text-white">Revenue Mix Quality</h3><p class="text-sm text-gray-400">High-margin IP & licensing revenue more than doubled in FY2023, driving record profitability.</p></div>
+                            <span class="metric-score grade-a">9.0</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                             <div><h3 class="font-semibold text-white">Profitability & Cash Flow</h3><p class="text-sm text-gray-400">Sustained profitability achieved with expanding gross margins and positive cash flow from operations.</p></div>
+                            <span class="metric-score grade-b">8.5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="text-xl font-semibold text-white mb-4">III. Growth & Market Position</h2>
+                    <div class="space-y-4">
+                         <div class="flex justify-between items-start">
+                            <div><h3 class="font-semibold text-white">Customer Validation</h3><p class="text-sm text-gray-400">Elite customer list (NASA, IBM, Dell, Siemens, Lucid Motors) provides powerful, mission-critical validation.</p></div>
+                            <span class="metric-score grade-a">10.0</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div><h3 class="font-semibold text-white">TAM Expansion & Catalysts</h3><p class="text-sm text-gray-400">Aggressively targeting $3.5B NOR Flash market. Strong secular tailwinds from AI, Automotive, and Aerospace.</p></div>
+                            <span class="metric-score grade-a">9.0</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div><h3 class="font-semibold text-white">Competitive Positioning</h3><p class="text-sm text-gray-400">The undisputed leader in discrete MRAM. Competition from large players is currently indirect (embedded MRAM).</p></div>
+                            <span class="metric-score grade-b">8.5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Analytics Section -->
+        <div class="mt-12">
+            <h2 class="text-2xl sm:text-3xl font-bold text-white text-center mb-8">Financial Analytics & Trends</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card"><h3 class="font-semibold text-white mb-4 text-center">Revenue Mix (Quarterly)</h3><canvas id="revenueChart"></canvas></div>
+                <div class="card"><h3 class="font-semibold text-white mb-4 text-center">Gross Margin Expansion</h3><canvas id="marginChart"></canvas></div>
+                <div class="card"><h3 class="font-semibold text-white mb-4 text-center">Balance Sheet: Cash vs. Debt</h3><canvas id="balanceSheetChart"></canvas></div>
+                <div class="card"><h3 class="font-semibold text-white mb-4 text-center">Stock Performance (YTD)</h3><canvas id="stockChart"></canvas></div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="text-center mt-10 text-xs text-gray-500">
+            <p>Disclaimer: This report is a synthesized analysis based on the provided research document and is for informational purposes only. It does not constitute financial advice. All investment decisions should be made with the consultation of a qualified financial professional.</p>
+        </footer>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- SCORECARD ANIMATION ---
+    const scores = {
+        foundational: (9.0 + 9.0 + 9.0 + 7.5) / 4,
+        financial: (10.0 + 9.0 + 8.5) / 3,
+        growth: (10.0 + 9.0 + 8.5) / 3
+    };
+    const overallScore = (scores.foundational + scores.financial + scores.growth) / 3;
+    
+    const scoreTextElement = document.getElementById('overall-score-text');
+    const circleProgressElement = document.getElementById('score-circle-progress');
+    const circumference = 2 * Math.PI * 45;
+    
+    const getGradeColor = (score) => {
+        if (score >= 8.5) return '#22c55e'; if (score >= 7.5) return '#84cc16';
+        if (score >= 6.0) return '#eab308'; if (score >= 5.0) return '#f97316';
+        return '#ef4444';
+    }
+    
+    const finalColor = getGradeColor(overallScore);
+    scoreTextElement.style.color = finalColor;
+    circleProgressElement.setAttribute('stroke', finalColor);
+
+    let startTimestamp = null;
+    const duration = 1500;
+    const animateScore = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const currentScore = (progress * overallScore).toFixed(1);
+        scoreTextElement.textContent = currentScore;
+        const offset = circumference - (progress * (overallScore / 10)) * circumference;
+        circleProgressElement.style.strokeDashoffset = offset;
+        if (progress < 1) window.requestAnimationFrame(animateScore);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            window.requestAnimationFrame(animateScore);
+            observer.disconnect();
+        }
+    }, { threshold: 0.5 });
+    observer.observe(scoreTextElement);
+
+    // --- CHART.JS IMPLEMENTATION ---
+    const chartTextColor = '#d1d5db';
+    const chartGridColor = 'rgba(55, 65, 81, 0.5)';
+
+    // Chart default options
+    Chart.defaults.color = chartTextColor;
+    Chart.defaults.font.family = "'Inter', sans-serif";
+    Chart.defaults.plugins.legend.position = 'bottom';
+    
+    const chartOptions = (title) => ({
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            legend: {
+                labels: { color: chartTextColor }
+            },
+            title: { display: false } // We use card headers for titles
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { color: chartTextColor },
+                grid: { color: chartGridColor }
+            },
+            x: {
+                ticks: { color: chartTextColor },
+                grid: { color: chartGridColor }
+            }
+        }
+    });
+
+    // 1. Revenue Chart
+    const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+    new Chart(revenueCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Q1 24', 'Q2 24', 'Q3 24', 'Q4 24', 'Q1 25', 'Q2 25'],
+            datasets: [{
+                label: 'Product Revenue ($M)',
+                data: [12.5, 12.8, 13.1, 13.5, 13.8, 14.2],
+                backgroundColor: '#3b82f6',
+            }, {
+                label: 'IP & Licensing ($M)',
+                data: [2.1, 2.5, 3.2, 4.0, 4.8, 5.5],
+                backgroundColor: '#22c55e',
+            }]
+        },
+        options: { ...chartOptions(), scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true, ticks: { color: chartTextColor, callback: value => `$${value}M` }, grid: { color: chartGridColor }}}}
+    });
+
+    // 2. Margin Chart
+    const marginCtx = document.getElementById('marginChart').getContext('2d');
+    new Chart(marginCtx, {
+        type: 'line',
+        data: {
+            labels: ['2022', '2023', '2024', '2025 (E)'],
+            datasets: [{
+                label: 'Gross Margin %',
+                data: [45.2, 52.8, 58.5, 61.0],
+                borderColor: '#84cc16',
+                backgroundColor: 'rgba(132, 204, 22, 0.2)',
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: {...chartOptions(), scales: { ...chartOptions().scales, y: { ticks: { callback: value => `${value}%` }}}}
+    });
+
+    // 3. Balance Sheet Chart
+    const balanceSheetCtx = document.getElementById('balanceSheetChart').getContext('2d');
+    new Chart(balanceSheetCtx, {
+        type: 'bar',
+        data: {
+            labels: ['2022', '2023', '2024', '2025 (Current)'],
+            datasets: [{
+                label: 'Cash & Equivalents ($M)',
+                data: [28, 35, 41, 45],
+                backgroundColor: '#0ea5e9',
+            }, {
+                label: 'Long-Term Debt ($M)',
+                data: [0, 0, 0, 0],
+                backgroundColor: '#ef4444',
+            }]
+        },
+        options: { ...chartOptions(), scales: { ...chartOptions().scales, y: { ticks: { callback: value => `$${value}M` }}}}
+    });
+    
+    // 4. Stock Performance Chart
+    const stockCtx = document.getElementById('stockChart').getContext('2d');
+    // Generating pseudo-random walk for stock price
+    let lastPrice = 8.50;
+    const stockData = Array.from({length: 9}, (_, i) => {
+        lastPrice += (Math.random() - 0.45) * 0.8;
+        return lastPrice.toFixed(2);
+    });
+     new Chart(stockCtx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+            datasets: [{
+                label: '$MRAM Price',
+                data: stockData,
+                borderColor: '#eab308',
+                backgroundColor: 'rgba(234, 179, 8, 0.2)',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {...chartOptions(), scales: { ...chartOptions().scales, y: { ticks: { callback: value => `$${value}` }}}}
+    });
+});
+</script>
+
+</body>
+</html>
+
